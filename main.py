@@ -106,6 +106,7 @@ def account_login(driver):
     for i in range(skills_entries):
         add_skills(driver, i)
     add_summary(driver)
+
 def add_position(driver, i):
     driver.get(URL_ACCOUNT + URL_ADD_POSITION)
     try:
