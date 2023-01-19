@@ -1,0 +1,25 @@
+[
+  {
+    "Title": "Software Engineer",
+    "Employment type": "Full-time",
+    "Company Name": "Microsoft",
+    "Location": "London, United Kingdom",
+    "Location type": "Remote",
+    "Start date": ["January", 2018],
+    "End date": ["May", 2020],
+    "Industry": "Software Development",
+    "Description": "Assisted in the development of software components that integrated with existing applications. Performed regular unit tests on software to ensure accuracy. Leveraged agile programming techniques to improve product quality. Profile headline: Skilled Software Engineer experienced in Agile Methodology and Application Integration"
+
+  },
+  {
+    "Title": "Software Engineer",
+    "Employment type": "Part-time",
+    "Company Name": "Amazon",
+    "Location": "Bristol, United Kingdom",
+    "Location type": "Remote",
+    "Start date": ["June", 2021],
+    "End date": ["July", 2022],
+    "Industry": "Software Development",
+    "Description": "My primary goals were to develop and deploy the software, while ensuring that the implementation adhered strictly to the company’s requirements. The project was challenging but rewarding; during it, I gained extensive experience in software design, coding, testing and debugging, as well as in database administration and version control systems. I worked closely with both internal and external stakeholders to ensure timely completion of the project and satisfaction of all relevant parties. Through my superb problem-solving skills, attention to detail and strong communication with colleagues, customers and project managers I was able to successfully complete this assignment prior to its deadline."
+  }
+]

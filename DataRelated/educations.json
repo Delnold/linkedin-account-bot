@@ -1,0 +1,22 @@
+[
+  {
+    "School": "Boston University",
+    "Degree": "Bachelor`s",
+    "Field of study": "Computer Science",
+    "Start date": ["January", 2018],
+    "End date": ["May", 2020],
+    "Grade": "100",
+    "Activities and societies": "Volleyball, Chess",
+    "Description": ""
+  },
+  {
+    "School": "Cambridge University",
+    "Degree": "Bachelor`s",
+    "Field of study": "Computer Science",
+    "Start date": ["January", 2017],
+    "End date": ["May", 2021],
+    "Grade": "100",
+    "Activities and societies": "Volleyball, Chess",
+    "Description": ""
+  }
+]
