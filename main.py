@@ -18,6 +18,23 @@ URL_ADD_EDUCATION = "/edit/forms/education/new/?profileFormEntryPoint=PROFILE_CO
 URL_ADD_SKILLS = "/edit/forms/skills/new/?profileFormEntryPoint=PROFILE_COMPLETION_HUB"
 EMAIL = input("Email: ")
 PASSWORD = input("Password: ")
+
+p_file = open('DataRelated/positions.json')
+positions_data = json.load(p_file)
+
+s_file = open('DataRelated/summaries.json')
+summary_data = json.load(s_file)
+
+e_file = open('DataRelated/educations.json')
+educations_data = json.load(e_file)
+
+s_file = open('DataRelated/skils.json')
+skills_data = json.load(s_file)
+
+positions_entries = len(positions_data)
+educations_entries = len(educations_data)
+skills_entries = len(skills_data)
+
 DELAY = 5
 
 def launch():
@@ -55,6 +72,7 @@ def choose_webdriver(driver_choice):
     else:
         driver = webdriver.Ie(service=service)
     account_login(driver)
+    driver.quit()
 
 def account_login(driver):
     global URL_ACCOUNT
@@ -81,15 +99,15 @@ def account_login(driver):
     driver.get(URL_ACCOUNT_REDIRECT)
     URL_ACCOUNT = driver.current_url
 
-    add_position(driver)
+    for i in range(positions_entries):
+        add_position(driver, i)
+    for i in range(educations_entries):
+        add_education(driver, i)
+    for i in range(skills_entries):
+        add_skills(driver, i)
     add_summary(driver)
-    add_education(driver)
-    add_skills(driver)
-
-def add_position(driver):
+def add_position(driver, i):
     driver.get(URL_ACCOUNT + URL_ADD_POSITION)
-    p_file = open('DataRelated/positions.json')
-    positions_data = json.load(p_file)
     try:
         WebDriverWait(driver, DELAY).until(EC.presence_of_element_located((By.XPATH, '//*[@id="single-typeahead-entity-form-component-profileEditFormElement-POSITION-profilePosition-ACoAAECTwVEBKX69x4pkEzGcik-8byRm1ef0Jas-1-title"]')))
         print("Add_Position page is ready!")
@@ -112,15 +130,15 @@ def add_position(driver):
     industry_form.clear()
     description_form.clear()
 
-    title_form.send_keys(positions_data[0]["Title"])
-    employment_form.send_keys(positions_data[0]["Employment type"])
-    company_form.send_keys(positions_data[0]["Company Name"])
-    location_form.send_keys(positions_data[0]["Location"])
-    location_type.send_keys(positions_data[0]["Location type"])
-    start_date_month_form.send_keys(positions_data[0]["Start date"][0])
-    start_date_year_form.send_keys(positions_data[0]["Start date"][1])
-    industry_form.send_keys(positions_data[0]["Industry"])
-    description_form.send_keys(positions_data[0]["Description"])
+    title_form.send_keys(positions_data[i]["Title"])
+    employment_form.send_keys(positions_data[i]["Employment type"])
+    company_form.send_keys(positions_data[i]["Company Name"])
+    location_form.send_keys(positions_data[i]["Location"])
+    location_type.send_keys(positions_data[i]["Location type"])
+    start_date_month_form.send_keys(positions_data[i]["Start date"][0])
+    start_date_year_form.send_keys(positions_data[i]["Start date"][1])
+    industry_form.send_keys(positions_data[i]["Industry"])
+    description_form.send_keys(positions_data[i]["Description"])
 
     submit_button = driver.find_element(By.XPATH, '/html/body/div[3]/div/div/div[3]/button/span')
     submit_button.click()
@@ -133,8 +151,6 @@ def add_position(driver):
 
 def add_summary(driver):
     driver.get(URL_ACCOUNT + URL_ADD_SUMMARY)
-    s_file = open('DataRelated/summaries.json')
-    summary_data = json.load(s_file)
     try:
         WebDriverWait(driver, DELAY).until(EC.presence_of_element_located((By.XPATH, '//*[@id="multiline-text-form-component-profileEditFormElement-SUMMARY-profile-ACoAAECTwVEBKX69x4pkEzGcik-8byRm1ef0Jas-summary"]')))
 
@@ -155,10 +171,8 @@ def add_summary(driver):
         print("Loading took too much time!")
 
 
-def add_education(driver):
+def add_education(driver, i):
     driver.get(URL_ACCOUNT + URL_ADD_EDUCATION)
-    e_file = open('DataRelated/educations.json')
-    educations_data = json.load(e_file)
     try:
         WebDriverWait(driver, DELAY).until(EC.presence_of_element_located((By.XPATH,
                                                                            '//*[@id="single-typeahead-entity-form-component-profileEditFormElement-EDUCATION-profileEducation-ACoAAECTwVEBKX69x4pkEzGcik-8byRm1ef0Jas-1-school"]')))
@@ -183,16 +197,16 @@ def add_education(driver):
     activities_form.clear()
     description_form.clear()
 
-    school_form.send_keys(educations_data[0]["School"])
-    degree_form.send_keys(educations_data[0]["Degree"])
-    field_of_study.send_keys(educations_data[0]["Field of study"])
-    start_date_year_form.send_keys(educations_data[0]["Start date"][1])
-    start_date_month_form.send_keys(educations_data[0]["Start date"][0])
-    end_date_year_form.send_keys(educations_data[0]["End date"][1])
-    end_date_month_form.send_keys(educations_data[0]["End date"][0])
-    grade_form.send_keys(educations_data[0]["Grade"])
-    activities_form.send_keys(educations_data[0]["Activities and societies"])
-    description_form.send_keys(educations_data[0]["Description"])
+    school_form.send_keys(educations_data[i]["School"])
+    degree_form.send_keys(educations_data[i]["Degree"])
+    field_of_study.send_keys(educations_data[i]["Field of study"])
+    start_date_year_form.send_keys(educations_data[i]["Start date"][1])
+    start_date_month_form.send_keys(educations_data[i]["Start date"][0])
+    end_date_year_form.send_keys(educations_data[i]["End date"][1])
+    end_date_month_form.send_keys(educations_data[i]["End date"][0])
+    grade_form.send_keys(educations_data[i]["Grade"])
+    activities_form.send_keys(educations_data[i]["Activities and societies"])
+    description_form.send_keys(educations_data[i]["Description"])
 
     submit_button = driver.find_element(By.XPATH, '/html/body/div[3]/div/div/div[3]/button/span')
     submit_button.click()
@@ -204,11 +218,8 @@ def add_education(driver):
     except TimeoutException:
         print("Loading took too much time!")
 
-def add_skills(driver):
+def add_skills(driver, i):
     driver.get(URL_ACCOUNT + URL_ADD_SKILLS)
-    s_file = open('DataRelated/skils.json')
-    skills_data = json.load(s_file)
-
     try:
         WebDriverWait(driver, DELAY).until(EC.presence_of_element_located((By.XPATH,
                                                                            '//*[@id="single-typeahead-entity-form-component-profileEditFormElement-SKILL-AND-ASSOCIATION-skill-ACoAAECTwVEBKX69x4pkEzGcik-8byRm1ef0Jas-1-name"]')))
@@ -218,7 +229,7 @@ def add_skills(driver):
 
     skills_form = driver.find_element(By.XPATH, '//*[@id="single-typeahead-entity-form-component-profileEditFormElement-SKILL-AND-ASSOCIATION-skill-ACoAAECTwVEBKX69x4pkEzGcik-8byRm1ef0Jas-1-name"]')
     skills_form.clear()
-    skills_form.send_keys(skills_data[0]["skills"])
+    skills_form.send_keys(skills_data[i]["skills"])
 
     submit_button = driver.find_element(By.XPATH, '/html/body/div[3]/div/div/div[3]/button/span')
     submit_button.click()
@@ -229,7 +240,6 @@ def add_skills(driver):
         print("Skills applied!")
     except TimeoutException:
         print("Loading took too much time!")
-    driver.quit()
 
 
 
