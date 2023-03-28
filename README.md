@@ -1,10 +1,11 @@
 # Linkedin-account-bot allows you to autofill your LinkedIn profile.
 
 ## The following steps to use the script
-1) Download WebDriver for your browser and move it to the project directory (By default, I include ChromeWebdriver, although, it might be old for your Chrome version)
-2) If you need to change the data for autofilled accounts, you need to manually edit JSON files in exact syntax as provided.
-2) Run the script, specify your WebDriver, and LinkedIn account credentials.
-3) Wait for the proccess to begin, you will be able to see it all by yourself.
+1) Git clone the project, and run "pip install -r requirements.txt"
+2) Download WebDriver for your browser and move it to the project directory (By default, I include ChromeWebdriver, although, it might be old for your Chrome version)
+3) If you need to change the data for autofilled accounts, you need to manually edit JSON files in exact syntax as provided.
+4) Run the script, specify your WebDriver, and LinkedIn account credentials.
+5) Wait for the proccess to begin, you will be able to see it all by yourself.
 
 ## How it works, and what it does?
 
