@@ -16,8 +16,8 @@ URL_ADD_PHOTO = "/edit/photo/"
 URL_ADD_SUMMARY = "/edit/forms/summary/new/?profileFormEntryPoint=PROFILE_COMPLETION_HUB"
 URL_ADD_EDUCATION = "/edit/forms/education/new/?profileFormEntryPoint=PROFILE_COMPLETION_HUB"
 URL_ADD_SKILLS = "/edit/forms/skills/new/?profileFormEntryPoint=PROFILE_COMPLETION_HUB"
-EMAIL = input("Email: ")
-PASSWORD = input("Password: ")
+EMAIL = None
+PASSWORD = None
 
 p_file = open('DataRelated/positions.json')
 positions_data = json.load(p_file)
@@ -37,6 +37,22 @@ skills_entries = len(skills_data)
 
 DELAY = 5
 
+def alternative_lauch():
+    global EMAIL
+    global PASSWORD
+    print("Connecting to selenium...")
+    driver = webdriver.Remote(
+        desired_capabilities={'browserName': 'chrome'},
+        command_executor='http://selenium:4444/wd/hub')
+    print("Success...")
+    EMAIL = input("Email: ")
+    PASSWORD = input("Password: ")
+    try:
+        account_login(driver)
+    except Exception as e:
+        driver.quit()
+    driver.quit()
+
 def launch():
     print('Choose the name of the browser for your webdriver:\n' +
           '[1] Chrome\n' +
@@ -45,6 +61,7 @@ def launch():
           '[4] IE \n' +
           '(If the input is incorrect, the default webdriver will be \n' +
           'chromedriver_win32" (ChromeDriver 109.0.5414.74)')
+
 
     driver_choice = input('Choice: ')
 
@@ -254,5 +271,5 @@ def add_profile_picture(driver):
 """
 
 if __name__ == "__main__":
-    launch()
+    alternative_lauch()
 

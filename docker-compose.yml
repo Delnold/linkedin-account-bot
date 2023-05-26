@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    build: .
+    depends_on:
+      - selenium
+    stdin_open: true
+    tty: true
+
+  selenium:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - '4444:4444'
+      - '7900:7900'
+    shm_size: 2g
