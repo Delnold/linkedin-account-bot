@@ -6,10 +6,14 @@ services:
       - selenium
     stdin_open: true
     tty: true
+    environment:
+      EMAIL: "${EMAIL}"
+      PASSWORD: "${PASSWORD}"
+    command:
+      /app/wait-for-it.sh http://selenium:4444/wd/hub -t 25 -- python main.py ${EMAIL} ${PASSWORD}
 
   selenium:
     image: selenium/standalone-chrome:latest
     ports:
       - '4444:4444'
-      - '7900:7900'
     shm_size: 2g

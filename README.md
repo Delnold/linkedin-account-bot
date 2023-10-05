@@ -1,11 +1,19 @@
 # Linkedin-account-bot allows you to autofill your LinkedIn profile.
 
 ## The following steps to use the script
-1) Git clone the project, and run "pip install -r requirements.txt"
-2) Download WebDriver for your browser and move it to the project directory (By default, I include ChromeWebdriver, although, it might be old for your Chrome version)
-3) If you need to change the data for autofilled accounts, you need to manually edit JSON files in exact syntax as provided.
-4) Run the script, specify your WebDriver, and LinkedIn account credentials.
-5) Wait for the proccess to begin, you will be able to see it all by yourself.
+1) Git clone the project
+2) If you need to change the data for autofilled accounts, you need to manually edit JSON files in exact syntax as provided.
+3) Export env variables (EMAIL, PASSWORD) or create .env file in the project folder and include them there. 
+Example with export:
+   ```bash 
+   export EMAIL=YOUR_LINKEDIN_EMAIL
+   export PASSWORD=YOUR_LINKEDIN_PASSWORD
+4) Run the following command
+   ```bash 
+   docker-compose up
+5) Wait for the process to begin, you can see the process by yourself following next steps:
+   - Visit http://localhost:4444/ui
+   - Click on the starting session. The password for the session: **secret**
 
 ## How it works, and what it does?
 
